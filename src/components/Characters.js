@@ -1,5 +1,5 @@
 export default function Characters(props) {
-    const { characters, setCharacters, location, episodio } = props;
+    const { characters, setCharacters} = props;
     const resetCharacters = () => {
         setCharacters(null);
     }
@@ -11,8 +11,6 @@ export default function Characters(props) {
             </span>
             <div className="container-characters">
                 {characters.map((characters, index) => (
-                    location.map((location, index1) => (
-                        episodio.map((episodio, index) => (
                             <div className="character-container" key={index}>
                                 <div>
                                     <img src={characters.image} alt={characters.name} />
@@ -41,16 +39,28 @@ export default function Characters(props) {
                                         <span>{characters.species}</span>
                                     </p>
                                     <p>
-                                        <span className="text-grey">Ubicacion:</span>
-                                        <span>{location.name}</span>
+                                        <span className="text-grey">Tipo:</span>
+                                        <span>{characters.type === "" ? "Not specified" : characters.type}</span>
                                     </p>
                                     <p>
-                                        <span className="text-grey">Episodios:</span>
-                                        <span>{episodio.episode}</span>
+                                        <span className="text-grey">Género:</span>
+                                        <span>{characters.gender}</span>
+                                    </p>
+                                    <p>
+                                        <span className="text-grey">Origen:</span>
+                                        <span>{characters.origin.name}</span>
+                                    </p>
+                                    <p>
+                                        <span className="text-grey">Creación:</span>
+                                        <span>{characters.created}</span>
+                                    </p>
+                                    <p>
+                                        <span className="text-grey">Ubicacion:</span>
+                                        <span>{characters.location.name}</span>
                                     </p>
                                 </div>
                             </div>
-                        ))))))}
+                        ))}
             </div>
             <span className="back-home" onClick={resetCharacters}>
                 Volver a home
